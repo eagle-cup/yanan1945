@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>中共七大 · 延安1945</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--r1:#7A1010;--r2:#C41E3A;--r3:#E8485C;--r4:#FF6B7F;
+--g1:#D4A843;--g2:#F2D98B;--g3:#B8942E;
+--c1:#FBF4E4;--c2:#EDE0CC;--c3:#E4D5BC;
+--b1:#2D1810;--b2:#5C3D2E;--b3:#8B7355;
+--w:#FFFEF7;--grn:#2D8B4E;
+--fd:'SimSun','STSong','Songti SC',serif;
+--fb:'Microsoft YaHei','PingFang SC','Helvetica Neue',sans-serif;
+--fa:'KaiTi','STKaiti','SimSun',serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--b1);background:var(--c1);line-height:1.8;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--r2);text-decoration:none}
+
+/* ===== PROGRESS ===== */
+.prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--g1),var(--r2));z-index:900;pointer-events:none}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px 80px;overflow:hidden;background:radial-gradient(ellipse at 30% 20%,rgba(212,168,67,.12) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(122,16,16,.25) 0%,transparent 50%),linear-gradient(175deg,#3A0A0A 0%,#7A1414 35%,#9B1B1B 60%,#B8342A 85%,#C8803A 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:url('http://pic.people.com.cn/NMediaFile/2021/0803/MAIN202108030834000281833706136.JPG') center/cover;opacity:.12;filter:blur(6px) brightness(.5);transform:scale(1.1)}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:50px;background:var(--c1);clip-path:ellipse(55% 100% at 50% 100%);z-index:2}
+.hc{position:relative;z-index:3;max-width:700px}
+.sbadge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:100px;color:var(--g2);font-size:13px;letter-spacing:.5px;margin-bottom:28px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sdot{width:8px;height:8px;background:var(--g1);border-radius:50%;display:inline-block}
+.hstar{width:52px;height:52px;margin:0 auto 16px}
+.hstar svg{width:100%;height:100%}
+.ht{font-family:var(--fd);font-size:clamp(2.6rem,8vw,4.2rem);font-weight:900;color:#fff;letter-spacing:.08em;line-height:1.25;margin-bottom:10px;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.hs{font-family:var(--fa);font-size:clamp(1rem,3.5vw,1.35rem);color:var(--g2);letter-spacing:.15em;margin-bottom:24px}
+.hm{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.mt{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:6px;color:rgba(255,255,255,.9);font-size:13px}
+
+/* ===== SECTIONS ===== */
+.sec{padding:56px 24px;max-width:860px;margin:0 auto;position:relative}
+.sl{display:inline-flex;align-items:center;gap:8px;font-family:var(--fa);font-size:13px;color:var(--r2);letter-spacing:.15em;margin-bottom:8px}
+.sl::before{content:'';width:24px;height:2px;background:var(--r2)}
+.st{font-family:var(--fd);font-size:clamp(1.3rem,4.5vw,1.8rem);font-weight:700;color:var(--b1);line-height:1.4;margin-bottom:16px}
+.dv{display:flex;align-items:center;justify-content:center;padding:8px 0}
+.dv svg{width:22px;height:22px;fill:var(--r2);opacity:.2}
+
+/* ===== INLINE IMAGE ===== */
+.inline-img{margin:18px 0;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);border:2px solid rgba(255,255,255,.5);position:relative}
+.inline-img img{width:100%;height:auto;display:block;transition:transform .4s}
+.inline-img:hover img{transform:scale(1.02)}
+.inline-img .cap{padding:8px 14px;background:var(--b1);color:rgba(255,255,255,.9);font-size:12px;letter-spacing:.5px}
+
+/* dual image row */
+.dual-img{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.dual-img .inline-img{margin:0}
+
+/* two-column: text + image side by side */
+.side-by-side{display:flex;gap:16px;align-items:flex-start;margin:18px 0}
+.side-by-side .sbs-img{flex:0 0 42%;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);border:2px solid rgba(255,255,255,.5)}
+.side-by-side .sbs-img img{width:100%;height:auto;display:block}
+.side-by-side .sbs-text{flex:1;font-size:15px;line-height:2;color:var(--b2)}
+.side-by-side .sbs-text p+p{margin-top:10px}
+@media(max-width:600px){
+.side-by-side{flex-direction:column}
+.side-by-side .sbs-img{flex:none;width:100%}
+}
+
+/* ===== CARD ===== */
+.card{background:var(--w);border-radius:14px;padding:24px 22px;margin-bottom:14px;box-shadow:0 2px 20px rgba(45,24,16,.06);border-left:4px solid var(--r2);position:relative;overflow:hidden}
+.card p{font-size:15px;line-height:2;color:var(--b2)}
+.card p+p{margin-top:10px}
+.hl{font-family:var(--fa);font-size:1.05rem;color:var(--r1);text-align:center;padding:22px 18px;margin:16px 0;background:linear-gradient(135deg,rgba(196,30,58,.04),rgba(212,168,67,.06));border-radius:12px;border:1px solid rgba(196,30,58,.08);line-height:1.9}
+
+/* ===== COUNTER BAR ===== */
+.cbar{display:flex;gap:12px;margin:20px 0;flex-wrap:wrap}
+.cbi{flex:1;min-width:100px;background:var(--w);border-radius:12px;padding:20px 12px;text-align:center;box-shadow:0 2px 12px rgba(45,24,16,.05);border-top:3px solid var(--g1)}
+.cbn{font-family:var(--fd);font-size:2rem;font-weight:900;color:var(--r2);line-height:1.1}
+.cbl{font-size:12px;color:var(--b3);margin-top:4px}
+
+/* ===== TABS ===== */
+.tabs{margin:16px 0}
+.tabs input[type=radio]{display:none}
+.tab-nav{display:flex;gap:0;border-bottom:2px solid var(--c3);margin-bottom:16px}
+.tab-nav label{flex:1;text-align:center;padding:12px 8px;font-size:14px;font-weight:500;color:var(--b3);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .25s}
+.tab-nav label:hover{color:var(--r2)}
+.tabs input:nth-child(1):checked ~ .tab-nav label:nth-child(1),
+.tabs input:nth-child(2):checked ~ .tab-nav label:nth-child(2),
+.tabs input:nth-child(3):checked ~ .tab-nav label:nth-child(3){color:var(--r2);border-bottom-color:var(--r2);font-weight:700}
+.tab-panel{display:none;background:var(--w);border-radius:14px;padding:24px 22px;box-shadow:0 2px 16px rgba(45,24,16,.06)}
+.tab-panel h4{font-family:var(--fd);font-size:1.1rem;color:var(--b1);margin-bottom:10px}
+.tab-panel p{font-size:14px;line-height:1.9;color:var(--b2)}
+.tab-panel p+p{margin-top:8px}
+.tabs input:nth-child(1):checked ~ .tab-panels .tab-panel:nth-child(1),
+.tabs input:nth-child(2):checked ~ .tab-panels .tab-panel:nth-child(2),
+.tabs input:nth-child(3):checked ~ .tab-panels .tab-panel:nth-child(3){display:block}
+
+/* ===== FLIP CARDS ===== */
+.fcards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
+.fcard{perspective:800px;height:240px;cursor:pointer}
+.fcard-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fcard:hover .fcard-inner,.fcard:active .fcard-inner{transform:rotateY(180deg)}
+.fcard-front,.fcard-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(45,24,16,.08)}
+.fcard-front{background:linear-gradient(135deg,var(--r1),var(--r2));color:#fff;text-align:center}
+.fcard-back{background:var(--w);transform:rotateY(180deg);text-align:left;justify-content:flex-start;overflow-y:auto}
+.fcard-av{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.5rem;font-weight:900;margin-bottom:12px;border:2px solid rgba(255,255,255,.3)}
+.fcard-name{font-family:var(--fd);font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.fcard-role{font-size:13px;opacity:.8}
+.fcard-hint{font-size:11px;opacity:.5;margin-top:12px}
+.fcard-back h4{font-family:var(--fd);font-size:1rem;color:var(--r2);margin-bottom:8px}
+.fcard-back p{font-size:13px;line-height:1.8;color:var(--b2)}
+
+/* ===== MIND MAP (interactive) ===== */
+.mm-wrap{position:relative;margin:20px auto;max-width:760px}
+.mm-svg{display:block;margin:0 auto;width:100%;max-width:760px}
+.mm-svg text{font-family:var(--fb);pointer-events:none}
+.mm-svg .nd{cursor:pointer;transition:filter .2s}
+.mm-svg .nd:hover{filter:drop-shadow(0 6px 18px rgba(0,0,0,.25)) brightness(1.1)}
+.mm-popup{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:8000;background:var(--w);border-radius:16px;padding:28px 24px;max-width:380px;width:90%;box-shadow:0 12px 48px rgba(0,0,0,.25);border-top:4px solid var(--r2)}
+.mm-popup.show{display:block}
+.mm-popup h4{font-family:var(--fd);font-size:1.15rem;color:var(--r2);margin-bottom:10px}
+.mm-popup p{font-size:14px;line-height:1.9;color:var(--b2);margin-bottom:8px}
+.mm-popup .mm-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:var(--c2);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:16px;color:var(--b3)}
+.mm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:7999}
+.mm-overlay.show{display:block}
+.mm-hint{text-align:center;font-size:13px;color:var(--b3);margin-bottom:12px}
+
+/* ===== BUBBLE CHART (card popup) ===== */
+.bub-section{position:relative}
+.bub-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:20px 0}
+.bub-item{position:relative;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:all .3s;color:#fff;font-weight:700;font-size:14px;line-height:1.3;box-shadow:0 4px 16px rgba(0,0,0,.12);overflow:hidden;padding:8px}
+.bub-item:hover{transform:scale(1.06);box-shadow:0 8px 28px rgba(0,0,0,.22)}
+.bub-card{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:8000;background:var(--w);border-radius:16px;padding:0;width:88%;max-width:360px;box-shadow:0 12px 48px rgba(0,0,0,.25);overflow:hidden}
+.bub-card.show{display:block}
+.bub-card-head{padding:20px 22px 16px;color:#fff}
+.bub-card-head h4{font-family:var(--fd);font-size:1.2rem;margin-bottom:4px}
+.bub-card-head .tag{font-size:12px;opacity:.85}
+.bub-card-body{padding:18px 22px 24px}
+.bub-card-body p{font-size:14px;line-height:1.9;color:var(--b2)}
+.bub-card-body ul{list-style:none;margin-top:10px;padding:0}
+.bub-card-body li{padding:6px 0;font-size:13px;color:var(--b2);border-bottom:1px solid var(--c2)}
+.bub-card-body li:last-child{border-bottom:none}
+.bub-card-body li::before{content:'◆ ';color:var(--r2);font-size:10px}
+.bub-close{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;color:#fff;font-size:15px}
+
+/* ===== TIMELINE ===== */
+.tl{position:relative;padding:16px 0}
+.tl::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--r2),var(--g1),var(--r2));border-radius:2px}
+.ti{position:relative;padding-left:48px;padding-bottom:28px}
+.ti:last-child{padding-bottom:0}
+.tid{position:absolute;left:11px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--w);border:3px solid var(--r2);z-index:1;transition:all .3s}
+.ti:hover .tid{background:var(--r2);transform:scale(1.2)}
+.tda{font-family:var(--fa);font-size:13px;color:var(--r2);margin-bottom:2px}
+.tti{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--b1);margin-bottom:4px}
+.tde{font-size:13px;line-height:1.8;color:var(--b2)}
+
+/* ===== SIGNIFICANCE ===== */
+.sig{display:grid;gap:12px}
+.sc2{background:var(--w);border-radius:12px;padding:20px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 2px 14px rgba(45,24,16,.05);transition:transform .3s}
+.sc2:hover{transform:translateX(4px)}
+.scn{flex-shrink:0;width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--r2),var(--r3));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:900;font-size:.9rem}
+.sct{font-size:14px;line-height:1.9;color:var(--b2)}
+.sct strong{color:var(--r1)}
+
+/* ===== VIDEO ===== */
+.vb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#1a1010;box-shadow:0 6px 30px rgba(0,0,0,.15);margin:16px 0}
+.vb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vinf{font-size:12px;color:var(--b3);text-align:center;margin-top:8px}
+
+/* ===== QUIZ BUTTON ===== */
+.qfb{position:fixed;bottom:28px;right:16px;z-index:9000;padding:16px 28px;background:linear-gradient(135deg,var(--r2),var(--r3));color:#fff;border-radius:100px;font-size:15px;font-weight:500;box-shadow:0 6px 28px rgba(196,30,58,.35);display:flex;align-items:center;gap:8px;cursor:pointer;border:none;font-family:var(--fb);transition:transform .2s}
+.qfb:hover{transform:translateY(-3px)}
+
+/* ===== QUIZ MODAL ===== */
+.qm{position:fixed;inset:0;z-index:9500;display:none;flex-direction:column;background:var(--c1)}
+.qmt{padding:14px 16px 10px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,.06)}
+.qmt-t{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--b1)}
+.qmt-b{width:36px;height:36px;border-radius:50%;background:var(--c2);display:inline-flex;align-items:center;justify-content:center;color:var(--b3);font-size:18px;cursor:pointer;border:none;margin-left:8px}
+.qmb{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px;padding-bottom:40px}
+.qms{display:none;max-width:600px;margin:0 auto}
+.qwc{text-align:center;padding-top:32px}
+.qwi{font-size:3rem;margin-bottom:12px}
+.qwt{font-family:var(--fd);font-size:1.4rem;font-weight:900;color:var(--b1);margin-bottom:8px}
+.qws{font-size:14px;color:var(--b2);margin-bottom:24px;line-height:1.8}
+.qwb{display:inline-flex;align-items:center;gap:8px;padding:14px 48px;background:linear-gradient(135deg,var(--r2),var(--r3));color:#fff;border-radius:100px;font-size:16px;font-weight:500;cursor:pointer;border:none;box-shadow:0 4px 20px rgba(196,30,58,.25)}
+.qqw{background:var(--w);border-radius:16px;padding:24px 20px;box-shadow:0 4px 24px rgba(45,24,16,.08);margin-bottom:16px}
+.qqt{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--b1);margin-bottom:16px;display:flex;gap:10px}
+.qqtn{flex-shrink:0;width:28px;height:28px;border-radius:8px;background:var(--r2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.qqol{display:grid;gap:10px}
+.qop{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--c1);border:2px solid transparent;border-radius:12px;cursor:pointer;transition:all .25s;font-size:15px;color:var(--b2)}
+.qop::before{content:attr(data-l);flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--w);border:2px solid var(--c3);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:13px;font-weight:700;color:var(--b3)}
+.qop:not(.off):hover{border-color:var(--g1)}
+.qop.ok{border-color:var(--grn);background:rgba(45,139,78,.08);color:var(--grn)}
+.qop.ok::before{background:var(--grn);border-color:var(--grn);color:#fff}
+.qop.ng{border-color:var(--r3);background:rgba(196,30,58,.05);color:var(--r3)}
+.qop.ng::before{background:var(--r3);border-color:var(--r3);color:#fff}
+.qop.off{pointer-events:none}
+.qex{margin-top:12px;padding:12px 16px;background:rgba(45,139,78,.06);border-radius:10px;border-left:3px solid var(--grn);font-size:14px;line-height:1.7;color:var(--b2);display:none}
+.qex.show{display:block}
+.qnx{display:flex;align-items:center;justify-content:center;width:100%;padding:14px;background:linear-gradient(135deg,var(--r2),var(--r3));color:#fff;border-radius:12px;font-size:15px;font-weight:500;margin-top:14px;cursor:pointer;border:none}
+.qr{text-align:center;padding:20px 0}
+.qrs{font-family:var(--fd);font-size:3rem;font-weight:900;color:var(--r2)}
+.qrl{font-size:15px;color:var(--b2);margin-top:8px}
+.qrst{font-size:1.8rem;margin-top:10px;letter-spacing:4px}
+.qrb{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.qrbt{padding:12px 24px;border-radius:100px;font-size:14px;font-weight:500;cursor:pointer;border:none}
+.qrb1{background:linear-gradient(135deg,var(--r2),var(--r3));color:#fff}
+.qrb2{background:var(--w);color:var(--r2);border:2px solid var(--r2) !important}
+.nbe{text-align:center;padding:48px 20px;color:var(--b3)}
+.nbl{padding:0}
+.nbi{background:var(--w);border-radius:12px;padding:16px;margin-bottom:12px;border-left:4px solid var(--r3);box-shadow:0 2px 12px rgba(45,24,16,.05)}
+.nbiq{font-family:var(--fd);font-size:.95rem;font-weight:700;color:var(--b1);margin-bottom:6px}
+.nbiy{font-size:13px;color:var(--r3);margin-bottom:2px}
+.nbic{font-size:13px;color:var(--grn);margin-bottom:6px}
+.nbie{padding:8px 12px;background:rgba(45,139,78,.05);border-radius:8px;font-size:13px;line-height:1.6;color:var(--b2)}
+.nbcl{padding:10px 24px;background:var(--c2);color:var(--b2);border-radius:100px;font-size:13px;cursor:pointer;border:none}
+
+/* ===== FOOTER ===== */
+.ft{text-align:center;padding:48px 24px;background:linear-gradient(180deg,var(--c1),var(--c2))}
+.ftl{width:40px;height:2px;background:var(--r2);margin:0 auto 16px;opacity:.2}
+.ftt{font-family:var(--fa);font-size:1rem;color:var(--b2);letter-spacing:.15em;margin-bottom:6px}
+.ftd{font-size:13px;color:var(--b3);margin-bottom:16px}
+.ftn{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.ftn a{padding:7px 14px;border:1px solid rgba(196,30,58,.12);border-radius:8px;color:var(--r2);font-size:13px}
+.ftn a.cur{background:var(--r2);color:#fff;border-color:var(--r2)}
+
+/* ===== RESPONSIVE ===== */
+@media(min-width:768px){
+.sec{padding:72px 40px}
+.fcards{grid-template-columns:repeat(4,1fr)}
+.tl::before{left:50%}
+.ti{width:50%;padding-left:36px}
+.ti:nth-child(odd){margin-left:0;text-align:right;padding-left:0;padding-right:36px}
+.ti:nth-child(even){margin-left:50%}
+.ti:nth-child(odd) .tid{left:auto;right:-8px}
+.ti:nth-child(even) .tid{left:-8px}
+}
+@media(max-width:480px){
+.hero{padding:48px 20px 64px}
+.sec{padding:40px 18px}
+.card{padding:20px 16px}
+.fcards{grid-template-columns:1fr 1fr;gap:10px}
+.fcard{height:220px}
+.tab-nav label{font-size:13px;padding:10px 6px}
+.bub-grid{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+<div class="hc">
+<div class="sbadge"><span class="sdot"></span>NFC感应成功 · 欢迎来到1945年的延安</div>
+<div class="hstar"><svg viewBox="0 0 100 100" fill="none"><path d="M50 5L61 38L95 38L67 58L78 92L50 72L22 92L33 58L5 38L39 38Z" fill="rgba(212,168,67,.9)" stroke="rgba(255,255,255,.3)" stroke-width="1"/></svg></div>
+<h1 class="ht">中共七大</h1>
+<p class="hs">团结的大会 · 胜利的大会</p>
+<div class="hm">
+<span class="mt">&#128197; 1945.4.23 — 6.11</span>
+<span class="mt">&#127963; 延安 · 杨家岭</span>
+<span class="mt">&#128205; 中央大礼堂</span>
+</div>
+</div>
+</section>
+
+<!-- ===== BACKGROUND ===== -->
+<section class="sec">
+<div class="sl">历史背景</div>
+<h2 class="st">1945年，黎明前最重要的时刻</h2>
+
+<div class="side-by-side">
+<div class="sbs-img">
+<img src="http://dangshi.people.com.cn/NMediaFile/2016/0202/MAIN201602020954000149071148407.jpg" alt="毛泽东在七大作报告" loading="lazy">
+</div>
+<div class="sbs-text">
+<p>1945年的春天，世界正迎来一个转折点。在太平洋战场，美军已逼近日本本土；在中国战场，经过八年艰苦卓绝的抗战，胜利的曙光终于出现在地平线上。</p>
+<p>然而，一个重大而紧迫的问题摆在面前：<strong>抗战即将胜利，中国该往何处去？</strong></p>
+</div>
+</div>
+
+<div class="card">
+<p>来自全国各地的<strong>755名党代表</strong>，穿越战火和封锁，汇聚到延安杨家岭中央大礼堂。他们代表着全国<strong>121万名党员</strong>，要为中国的前途命运做出最重要的抉择。这是自1928年六大以来，间隔最久、准备最充分的一次全国代表大会。</p>
+</div>
+
+<div class="dual-img">
+<div class="inline-img">
+<img src="http://inews.gtimg.com/om_bt/OfiXOxrbxEV1tYxKBCxahStH1B4anuf6tsw9tjkjnT5V4AA/1000" alt="杨家岭革命旧址" loading="lazy">
+<div class="cap">延安杨家岭革命旧址 — 七大在这里召开</div>
+</div>
+<div class="inline-img">
+<img src="http://p2.cri.cn/M00/39/B4/rBABCmFDOIeAHMwSAAAAAAAAAAA036.800x598.jpg" alt="七大会场" loading="lazy">
+<div class="cap">杨家岭中央大礼堂 — 七大召开地</div>
+</div>
+</div>
+
+<div class="hl">"我们的大会是在这种形势下召开的：<br>中国人民面前有两种命运，<br>一个是独立、自由、民主、统一、富强的中国，<br>一个是半殖民地半封建的、分裂的、贫弱的中国。"<br><span style="font-size:.85em;opacity:.6">——毛泽东《两个中国之命运》</span></div>
+
+<div class="cbar">
+<div class="cbi"><div class="cbn">755</div><div class="cbl">参会代表</div></div>
+<div class="cbi"><div class="cbn">121万</div><div class="cbl">全国党员</div></div>
+<div class="cbi"><div class="cbn">50天</div><div class="cbl">会期历时</div></div>
+<div class="cbi"><div class="cbn">44+33</div><div class="cbl">中央委员+候补</div></div>
+</div>
+</section>
+
+<div class="dv"><svg viewBox="0 0 24 24"><path d="M12 2L14.5 8.5L21 9.3L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.3L9.5 8.5Z"/></svg></div>
+
+<!-- ===== MIND MAP ===== -->
+<section class="sec">
+<div class="sl">知识图谱</div>
+<h2 class="st">七大核心知识脉络</h2>
+<p class="mm-hint">点击任意节点查看详细信息</p>
+<div class="mm-wrap">
+<svg class="mm-svg" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="gc" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#C41E3A"/><stop offset="100%" stop-color="#7A1010"/></linearGradient>
+<linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E8C96A"/><stop offset="100%" stop-color="#D4A843"/></linearGradient>
+<linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6AADCB"/><stop offset="100%" stop-color="#3B82A0"/></linearGradient>
+<linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#5BB87A"/><stop offset="100%" stop-color="#2D8B4E"/></linearGradient>
+<linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#A78BDB"/><stop offset="100%" stop-color="#8B5CF6"/></linearGradient>
+<filter id="ds"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity=".15"/></filter>
+</defs>
+<!-- Lines from center -->
+<path d="M380,240 C280,200 200,130 160,100" stroke="#D4A843" stroke-width="2.5" fill="none" opacity=".35"/>
+<path d="M380,240 C480,200 560,130 600,100" stroke="#3B82A0" stroke-width="2.5" fill="none" opacity=".35"/>
+<path d="M380,240 C280,280 200,350 160,380" stroke="#2D8B4E" stroke-width="2.5" fill="none" opacity=".35"/>
+<path d="M380,240 C480,280 560,350 600,380" stroke="#8B5CF6" stroke-width="2.5" fill="none" opacity=".35"/>
+<!-- Sub lines B1 -->
+<path d="M160,100 C120,70 80,50 60,40" stroke="#D4A843" stroke-width="1.5" fill="none" opacity=".2"/>
+<path d="M160,100 C120,110 80,130 60,145" stroke="#D4A843" stroke-width="1.5" fill="none" opacity=".2"/>
+<path d="M160,100 C200,70 240,50 260,38" stroke="#D4A843" stroke-width="1.5" fill="none" opacity=".2"/>
+<!-- Sub lines B2 -->
+<path d="M600,100 C560,70 530,50 510,40" stroke="#3B82A0" stroke-width="1.5" fill="none" opacity=".2"/>
+<path d="M600,100 C640,70 680,50 700,40" stroke="#3B82A0" stroke-width="1.5" fill="none" opacity=".2"/>
+<path d="M600,100 C640,120 680,140 700,150" stroke="#3B82A0" stroke-width="1.5" fill="none" opacity=".2"/>
+<!-- Sub lines B3 -->
+<path d="M160,380 C120,350 80,330 60,320" stroke="#2D8B4E" stroke-width="1.5" fill="none" opacity=".2"/>
+<path d="M160,380 C120,400 80,420 60,435" stroke="#2D8B4E" stroke-width="1.5" fill="none" opacity=".2"/>
+<path d="M160,380 C200,410 240,430 260,440" stroke="#2D8B4E" stroke-width="1.5" fill="none" opacity=".2"/>
+<!-- Sub lines B4 -->
+<path d="M600,380 C560,410 530,430 510,440" stroke="#8B5CF6" stroke-width="1.5" fill="none" opacity=".2"/>
+<path d="M600,380 C640,360 680,340 700,330" stroke="#8B5CF6" stroke-width="1.5" fill="none" opacity=".2"/>
+<path d="M600,380 C640,400 680,420 700,435" stroke="#8B5CF6" stroke-width="1.5" fill="none" opacity=".2"/>
+
+<!-- Center node -->
+<g class="nd" onclick="mmShow('中共七大','1945年4月23日至6月11日，在延安杨家岭中央大礼堂召开。755名代表参会，代表全国121万党员。这是中国共产党历史上最重要的一次代表大会之一。','会议历时50天，通过了新党章，选举了新的中央委员会，确立了毛泽东思想为党的指导思想。')">
+<ellipse cx="380" cy="240" rx="72" ry="42" fill="url(#gc)" filter="url(#ds)"/>
+<text x="380" y="234" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">中共七大</text>
+<text x="380" y="255" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="11">1945 · 延安</text>
+</g>
+
+<!-- B1: 核心决议 -->
+<g class="nd" onclick="mmShow('核心决议','七大作出了三项具有历史意义的重大决议：确立毛泽东思想为指导思想、通过新党章、选举新的中央领导集体。','这三大决议从根本上统一了全党思想，为夺取新民主主义革命胜利奠定了政治和理论基础。')">
+<rect x="105" y="72" width="112" height="56" rx="16" fill="url(#g1)" filter="url(#ds)"/>
+<text x="161" y="95" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">核心决议</text>
+<text x="161" y="115" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="10">三大历史性决策</text>
+</g>
+<g class="nd" onclick="mmShow('毛泽东思想','刘少奇在《关于修改党章的报告》中首次系统阐述毛泽东思想的科学内涵。','大会将毛泽东思想确立为党的指导思想，写入党章。这是马克思主义中国化的第一次历史性飞跃。')">
+<rect x="15" y="15" width="90" height="48" rx="12" fill="#E8C96A" opacity=".85" filter="url(#ds)"/>
+<text x="60" y="44" text-anchor="middle" fill="#5C3D2E" font-size="11" font-weight="600">毛泽东思想</text>
+</g>
+<g class="nd" onclick="mmShow('选举中央领导','七大选举产生了44名中央委员和33名候补中央委员。','毛泽东在七届一中全会上当选为中央委员会主席，形成了以毛泽东为核心的第一代中央领导集体。')">
+<rect x="15" y="122" width="90" height="48" rx="12" fill="#E8C96A" opacity=".85" filter="url(#ds)"/>
+<text x="60" y="150" text-anchor="middle" fill="#5C3D2E" font-size="11" font-weight="600">选举领导</text>
+</g>
+<g class="nd" onclick="mmShow('政治路线与纲领','七大制定了党的政治路线：放手发动群众，壮大人民力量，在我党的领导下，打败日本侵略者，解放全国人民，建立一个新民主主义的中国。','这条路线成为指引中国革命走向胜利的根本方针。')">
+<rect x="215" y="12" width="90" height="48" rx="12" fill="#E8C96A" opacity=".85" filter="url(#ds)"/>
+<text x="260" y="40" text-anchor="middle" fill="#5C3D2E" font-size="11" font-weight="600">路线纲领</text>
+</g>
+
+<!-- B2: 重要人物 -->
+<g class="nd" onclick="mmShow('重要人物','七大上有四位重要领导人分别作了关键报告，构成了大会的核心内容。','毛泽东作政治报告、刘少奇作修改党章报告、朱德作军事报告、周恩来作统一战线发言。')">
+<rect x="543" y="72" width="112" height="56" rx="16" fill="url(#g2)" filter="url(#ds)"/>
+<text x="599" y="95" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">重要人物</text>
+<text x="599" y="115" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="10">四大报告人</text>
+</g>
+<g class="nd" onclick="mmShow('毛泽东','中国共产党、中国人民解放军、中华人民共和国的主要缔造者。','在七大上作《论联合政府》政治报告和《愚公移山》闭幕词，在七届一中全会上当选为中央委员会主席。')">
+<rect x="468" y="15" width="85" height="48" rx="12" fill="#6AADCB" opacity=".85" filter="url(#ds)"/>
+<text x="510" y="44" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">毛泽东</text>
+</g>
+<g class="nd" onclick="mmShow('刘少奇','伟大的马克思主义者和无产阶级革命家。','在七大上作《关于修改党章的报告》，第一次系统阐述毛泽东思想的科学内涵，为确立指导思想做出关键贡献。')">
+<rect x="660" y="15" width="85" height="48" rx="12" fill="#6AADCB" opacity=".85" filter="url(#ds)"/>
+<text x="702" y="44" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">刘少奇</text>
+</g>
+<g class="nd" onclick="mmShow('朱德','中国人民解放军的主要创建者之一，被誉为"红军之父"。','在七大上作《论解放区战场》军事报告，全面总结人民军队抗战的光辉历程。')">
+<rect x="660" y="122" width="85" height="48" rx="12" fill="#6AADCB" opacity=".85" filter="url(#ds)"/>
+<text x="702" y="150" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">朱德</text>
+</g>
+
+<!-- B3: 历史意义 -->
+<g class="nd" onclick="mmShow('历史意义','七大对中国革命产生了深远而持久的影响，主要体现在四个方面。','思想统一、组织巩固、指明方向、承前启后——七大被誉为"团结的大会、胜利的大会"。')">
+<rect x="105" y="352" width="112" height="56" rx="16" fill="url(#g3)" filter="url(#ds)"/>
+<text x="161" y="375" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">历史意义</text>
+<text x="161" y="395" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="10">四大深远影响</text>
+</g>
+<g class="nd" onclick="mmShow('思想统一','确立毛泽东思想为全党指导思想，全党在马克思列宁主义、毛泽东思想的基础上达到了空前一致。','这是中国共产党在思想理论上的巨大飞跃，为后来的革命胜利提供了思想武器。')">
+<rect x="15" y="295" width="90" height="48" rx="12" fill="#5BB87A" opacity=".85" filter="url(#ds)"/>
+<text x="60" y="323" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">思想统一</text>
+</g>
+<g class="nd" onclick="mmShow('组织巩固','选举产生了以毛泽东为核心的中央领导集体，全党在组织上达到了空前的团结和统一。','44名中央委员、33名候补中央委员的选举，标志着党的组织建设走向成熟。')">
+<rect x="15" y="412" width="90" height="48" rx="12" fill="#5BB87A" opacity=".85" filter="url(#ds)"/>
+<text x="60" y="440" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">组织巩固</text>
+</g>
+<g class="nd" onclick="mmShow('指明方向','七大提出建立新民主主义中国的完整纲领和路线。','为抗战胜利后的中国指明了前进方向，为建立新中国奠定了理论和政策基础。')">
+<rect x="215" y="418" width="90" height="48" rx="12" fill="#5BB87A" opacity=".85" filter="url(#ds)"/>
+<text x="260" y="446" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">指明方向</text>
+</g>
+
+<!-- B4: 重要文献 -->
+<g class="nd" onclick="mmShow('重要文献','七大产生了多部重要文献，构成了中国革命的理论和政策基础。','其中最核心的三份文献：《论联合政府》《关于修改党章的报告》《愚公移山》。')">
+<rect x="543" y="352" width="112" height="56" rx="16" fill="url(#g4)" filter="url(#ds)"/>
+<text x="599" y="375" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">重要文献</text>
+<text x="599" y="395" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="10">三大核心报告</text>
+</g>
+<g class="nd" onclick="mmShow('论联合政府','毛泽东的政治报告，七大最核心的文献。','提出建立民主联合政府的主张，系统阐述新民主主义革命理论，首次提出党的三大作风。')">
+<rect x="468" y="418" width="85" height="48" rx="12" fill="#A78BDB" opacity=".85" filter="url(#ds)"/>
+<text x="510" y="446" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">论联合政府</text>
+</g>
+<g class="nd" onclick="mmShow('修改党章报告','刘少奇作的重要报告。','第一次系统阐述毛泽东思想的科学内涵和历史地位，为将毛泽东思想写入党章提供了理论依据。')">
+<rect x="660" y="295" width="85" height="48" rx="12" fill="#A78BDB" opacity=".85" filter="url(#ds)"/>
+<text x="702" y="323" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">修改党章</text>
+</g>
+<g class="nd" onclick="mmShow('愚公移山','毛泽东在七大闭幕时作的著名讲话。','用"愚公移山"的寓言激励全党：下定决心，不怕牺牲，排除万难，去争取胜利。成为传颂至今的经典名篇。')">
+<rect x="660" y="412" width="85" height="48" rx="12" fill="#A78BDB" opacity=".85" filter="url(#ds)"/>
+<text x="702" y="440" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">愚公移山</text>
+</g>
+</svg>
+</div>
+</section>
+
+<!-- Mind map popup -->
+<div class="mm-overlay" id="mmOv" onclick="mmClose()"></div>
+<div class="mm-popup" id="mmPop">
+<button class="mm-close" onclick="mmClose()">&#10005;</button>
+<h4 id="mmT"></h4>
+<p id="mmP1"></p>
+<p id="mmP2" style="color:var(--b3);font-size:13px"></p>
+</div>
+
+<div class="dv"><svg viewBox="0 0 24 24"><path d="M12 2L14.5 8.5L21 9.3L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.3L9.5 8.5Z"/></svg></div>
+
+<!-- ===== REPORTS (TABS) ===== -->
+<section class="sec">
+<div class="sl">核心报告</div>
+<h2 class="st">七大上的三大重要报告</h2>
+
+<div class="tabs">
+<input type="radio" name="tab" id="tab1" checked>
+<input type="radio" name="tab" id="tab2">
+<input type="radio" name="tab" id="tab3">
+<div class="tab-nav">
+<label for="tab1">论联合政府</label>
+<label for="tab2">修改党章报告</label>
+<label for="tab3">论解放区战场</label>
+</div>
+<div class="tab-panels">
+<div class="tab-panel">
+<h4>毛泽东 ·《论联合政府》</h4>
+<p>这是七大最核心的政治报告。毛泽东深刻分析了当时国内外形势，提出：<strong>放手发动群众，壮大人民力量</strong>，在中国共产党的领导下，打败日本侵略者，解放全国人民，建立一个新民主主义的中国。</p>
+<p>报告还首次系统阐述了党的<strong>三大作风</strong>：理论联系实际、密切联系群众、批评与自我批评。这三大作风成为中国共产党区别于其他政党的显著标志。</p>
+</div>
+<div class="tab-panel">
+<h4>刘少奇 ·《关于修改党章的报告》</h4>
+<p>刘少奇在报告中第一次<strong>系统阐述了毛泽东思想</strong>的科学内涵和历史地位。他指出，毛泽东思想是马克思列宁主义的理论与中国革命的实践之统一的思想。</p>
+<p>大会据此将毛泽东思想写入党章，确立为全党一切工作的指针，实现了党在指导思想上的空前统一。</p>
+</div>
+<div class="tab-panel">
+<h4>朱德 ·《论解放区战场》</h4>
+<p>朱德全面总结了人民军队在抗日战争中的光辉历程。他指出，八路军、新四军在极端困难的条件下，开辟了广大的解放区战场，<strong>抗击了大部分日军和几乎全部伪军</strong>。</p>
+<p>报告阐明了人民战争的军事路线，强调军民一致、官兵一致的原则，为最终夺取抗战胜利提供了军事理论指导。</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="dv"><svg viewBox="0 0 24 24"><path d="M12 2L14.5 8.5L21 9.3L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.3L9.5 8.5Z"/></svg></div>
+
+<!-- ===== PEOPLE (FLIP CARDS) ===== -->
+<section class="sec">
+<div class="sl">重要人物</div>
+<h2 class="st">七大核心人物（悬停翻转卡片）</h2>
+
+<div class="dual-img">
+<div class="inline-img">
+<img src="http://dangshi.people.com.cn/NMediaFile/2015/0429/MAIN201504291108000275750652281.jpg" alt="毛泽东在七大讲话" loading="lazy">
+<div class="cap">毛泽东在七大会议上作重要讲话</div>
+</div>
+<div class="inline-img">
+<img src="http://www.chinanews.com.cn/cul/2015/04-23/U528P4T8D7227550F107DT20150423083312.jpg" alt="七大代表" loading="lazy">
+<div class="cap">七大会议代表历史照片</div>
+</div>
+</div>
+
+<div class="fcards">
+<div class="fcard">
+<div class="fcard-inner">
+<div class="fcard-front"><div class="fcard-av">毛</div><div class="fcard-name">毛泽东</div><div class="fcard-role">政治报告 · 当选主席</div><div class="fcard-hint">悬停翻转 →</div></div>
+<div class="fcard-back"><h4>毛泽东</h4><p>作《论联合政府》政治报告，系统阐述新民主主义革命理论，提出三大作风。在七届一中全会上当选为中央委员会主席，成为党的核心领导人。闭幕时作了著名的《愚公移山》讲话。</p></div>
+</div>
+</div>
+<div class="fcard">
+<div class="fcard-inner">
+<div class="fcard-front"><div class="fcard-av">刘</div><div class="fcard-name">刘少奇</div><div class="fcard-role">修改党章报告</div><div class="fcard-hint">悬停翻转 →</div></div>
+<div class="fcard-back"><h4>刘少奇</h4><p>作《关于修改党章的报告》，第一次系统阐述毛泽东思想的科学内涵，为确立毛泽东思想为党的指导思想做出了关键贡献。后成为党和国家重要领导人。</p></div>
+</div>
+</div>
+<div class="fcard">
+<div class="fcard-inner">
+<div class="fcard-front"><div class="fcard-av">朱</div><div class="fcard-name">朱德</div><div class="fcard-role">军事报告</div><div class="fcard-hint">悬停翻转 →</div></div>
+<div class="fcard-back"><h4>朱德</h4><p>作《论解放区战场》军事报告，全面总结八路军、新四军在抗战中的光辉历程和伟大成就，阐明人民战争的军事路线。被誉为"红军之父"。</p></div>
+</div>
+</div>
+<div class="fcard">
+<div class="fcard-inner">
+<div class="fcard-front"><div class="fcard-av">周</div><div class="fcard-name">周恩来</div><div class="fcard-role">统一战线发言</div><div class="fcard-hint">悬停翻转 →</div></div>
+<div class="fcard-back"><h4>周恩来</h4><p>作《论统一战线》重要发言，总结了党在统一战线中的经验教训，阐述了抗日民族统一战线的方针政策。后成为新中国第一任总理。</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<div style="text-align:center;padding:48px 24px;background:radial-gradient(ellipse at 50% 50%,rgba(196,30,58,.04),transparent 70%),var(--c1)">
+<div style="font-family:var(--fd);font-size:3rem;color:var(--r2);opacity:.15;line-height:1;margin-bottom:-6px">"</div>
+<div style="font-family:var(--fa);font-size:clamp(1.1rem,4vw,1.45rem);color:var(--b1);max-width:560px;margin:0 auto;line-height:2;letter-spacing:.05em">下定决心，不怕牺牲，<br>排除万难，去争取胜利。</div>
+<div style="margin-top:14px;font-size:14px;color:var(--b3);letter-spacing:.1em">——毛泽东 · 在中共七大上的号召</div>
+</div>
+
+<!-- ===== BUBBLE CHART ===== -->
+<section class="sec bub-section">
+<div class="sl">关键词云</div>
+<h2 class="st">七大核心概念（点击气泡查看详情）</h2>
+<div class="bub-grid">
+<div class="bub-item" style="width:130px;height:130px;background:linear-gradient(135deg,#C41E3A,#E8485C);font-size:16px" onclick="bubOpen(0)">毛泽东思想</div>
+<div class="bub-item" style="width:110px;height:110px;background:linear-gradient(135deg,#D4A843,#B8942E)" onclick="bubOpen(1)">联合政府</div>
+<div class="bub-item" style="width:100px;height:100px;background:linear-gradient(135deg,#3B82A0,#2563EB);font-size:13px" onclick="bubOpen(2)">三大作风</div>
+<div class="bub-item" style="width:120px;height:120px;background:linear-gradient(135deg,#2D8B4E,#059669)" onclick="bubOpen(3)">团结胜利</div>
+<div class="bub-item" style="width:90px;height:90px;background:linear-gradient(135deg,#8B5CF6,#6D28D9);font-size:13px" onclick="bubOpen(4)">新党章</div>
+<div class="bub-item" style="width:105px;height:105px;background:linear-gradient(135deg,#F59E0B,#D97706);font-size:13px" onclick="bubOpen(5)">愚公移山</div>
+<div class="bub-item" style="width:95px;height:95px;background:linear-gradient(135deg,#EC4899,#BE185D);font-size:13px" onclick="bubOpen(6)">人民战争</div>
+<div class="bub-item" style="width:85px;height:85px;background:linear-gradient(135deg,#14B8A6,#0D9488);font-size:12px" onclick="bubOpen(7)">两个命运</div>
+</div>
+</section>
+
+<!-- Bubble popup -->
+<div class="mm-overlay" id="bubOv" onclick="bubClose()"></div>
+<div class="bub-card" id="bubCard">
+<button class="bub-close" onclick="bubClose()">&#10005;</button>
+<div class="bub-card-head" id="bubHead"><h4 id="bubT"></h4><div class="tag" id="bubTag"></div></div>
+<div class="bub-card-body" id="bubBody"></div>
+</div>
+
+<div class="dv"><svg viewBox="0 0 24 24"><path d="M12 2L14.5 8.5L21 9.3L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.3L9.5 8.5Z"/></svg></div>
+
+<!-- ===== TIMELINE ===== -->
+<section class="sec">
+<div class="sl">大事时间线</div>
+<h2 class="st">七大的重要时刻</h2>
+
+<div class="dual-img">
+<div class="inline-img">
+<img src="http://dangshi.people.com.cn/NMediaFile/2016/0202/MAIN201602020954000149071148407.jpg" alt="毛泽东作论联合政府报告" loading="lazy">
+<div class="cap">毛泽东作《论联合政府》政治报告</div>
+</div>
+<div class="inline-img">
+<img src="http://dangshi.people.com.cn/NMediaFile/2015/0429/MAIN201504291108000275750652281.jpg" alt="七大会议现场" loading="lazy">
+<div class="cap">七大会议现场 — 代表们展开热烈讨论</div>
+</div>
+</div>
+
+<div class="tl">
+<div class="ti"><div class="tid"></div><div class="tda">4月23日</div><div class="tti">七大隆重开幕</div><div class="tde">755名代表齐聚杨家岭中央大礼堂。毛泽东致开幕词《两个中国之命运》，指出中国面临光明与黑暗两种命运的抉择。</div></div>
+<div class="ti"><div class="tid"></div><div class="tda">4月24日</div><div class="tti">《论联合政府》政治报告</div><div class="tde">毛泽东作了长篇政治报告，系统阐述新民主主义革命理论，提出建立民主联合政府的主张和党的三大作风。</div></div>
+<div class="ti"><div class="tid"></div><div class="tda">5月中旬</div><div class="tti">各报告与深入讨论</div><div class="tde">朱德作《论解放区战场》军事报告，刘少奇作修改党章报告，周恩来作统一战线发言。代表们展开了热烈而深入的讨论。</div></div>
+<div class="ti"><div class="tid"></div><div class="tda">6月11日</div><div class="tti">七大胜利闭幕</div><div class="tde">通过新党章，选举产生44名中央委员和33名候补中央委员。毛泽东致闭幕词《愚公移山》，号召全党下定决心、排除万难。</div></div>
+</div>
+</section>
+
+<div class="dv"><svg viewBox="0 0 24 24"><path d="M12 2L14.5 8.5L21 9.3L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.3L9.5 8.5Z"/></svg></div>
+
+<!-- ===== SIGNIFICANCE ===== -->
+<section class="sec">
+<div class="sl">历史意义</div>
+<h2 class="st">七大为什么如此重要？</h2>
+<div class="sig">
+<div class="sc2"><div class="scn">1</div><div class="sct"><strong>思想统一：</strong>确立毛泽东思想为指导思想，全党在思想上达到了空前一致。这是马克思主义中国化的第一次历史性飞跃。</div></div>
+<div class="sc2"><div class="scn">2</div><div class="sct"><strong>组织巩固：</strong>选举产生了以毛泽东为核心的中央领导集体，44名中央委员和33名候补中央委员，全党更加团结有力。</div></div>
+<div class="sc2"><div class="scn">3</div><div class="sct"><strong>指明方向：</strong>提出建立新民主主义中国的完整纲领和政治路线，为抗战胜利后的中国指明了前进方向。</div></div>
+<div class="sc2"><div class="scn">4</div><div class="sct"><strong>承前启后：</strong>自1928年六大以来间隔17年，是准备最充分、影响最深远的一次大会，被誉为"团结的大会、胜利的大会"。</div></div>
+</div>
+</section>
+
+<!-- ===== VIDEO ===== -->
+<section class="sec">
+<div class="sl">视频讲解</div>
+<h2 class="st">一段影像，带你走进七大的历史</h2>
+<div class="vb">
+<iframe src="https://player.bilibili.com/player.html?bvid=BV1xC411371A&high_quality=1&danmaku=0&autoplay=0" scrolling="no" allowfullscreen="true" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe>
+</div>
+<div class="vinf">视频来源：B站 · 红色印记 — 中共七大（后续将替换为项目自制视频）</div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="ft">
+<div class="ftl"></div>
+<div class="ftt">延安1945 · NFC智能研学沙盘</div>
+<div class="ftd">贴近NFC，开启一段红色历史之旅</div>
+<div class="ftn">
+<a href="#" class="cur">中共七大</a>
+<a href="#">窑洞对</a>
+<a href="#">延安整风</a>
+<a href="#">大生产运动</a>
+<a href="#">红色心脏</a>
+</div>
+</footer>
+
+<!-- ===== QUIZ BUTTON ===== -->
+<button class="qfb" onclick="openQuiz()">
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+随堂小测
+</button>
+
+<!-- ===== QUIZ MODAL ===== -->
+<div class="qm" id="qm">
+<div class="qmt">
+<span class="qmt-t" id="qmtt">随堂小测</span>
+<div style="display:flex">
+<button class="qmt-b" onclick="showNB()">&#128214;</button>
+<button class="qmt-b" onclick="closeQuiz()">&#10005;</button>
+</div>
+</div>
+<div class="qmb">
+<div class="qms" id="qs-w" style="display:block">
+<div class="qwc">
+<div class="qwi">&#9997;&#65039;</div>
+<div class="qwt">中共七大 · 随堂小测</div>
+<div class="qws">从20道题库中随机抽取5道<br>检验你对七大知识的掌握程度</div>
+<button class="qwb" onclick="startQuiz()">开始答题 &#10132;</button>
+</div>
+</div>
+<div class="qms" id="qs-q"><div id="qArea"></div></div>
+<div class="qms" id="qs-r">
+<div class="qr">
+<div class="qrs" id="rS">0/5</div>
+<div class="qrl" id="rL"></div>
+<div class="qrst" id="rSt"></div>
+<div class="qrb">
+<button class="qrbt qrb1" onclick="startQuiz()">再来一轮</button>
+<button class="qrbt qrb2" onclick="showNB()">查看错题本</button>
+</div>
+</div>
+</div>
+<div class="qms" id="qs-n">
+<div style="text-align:center;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.05)">
+<div style="font-family:var(--fd);font-size:1.2rem;font-weight:900;color:var(--b1)">&#128214; 我的错题本</div>
+<div style="font-size:13px;color:var(--b3);margin-top:4px" id="nbSub"></div>
+</div>
+<div id="nbC"></div>
+<div style="text-align:center;padding:16px"><button class="nbcl" onclick="clearNB()">清空错题本</button></div>
+</div>
+</div>
+</div>
+
+<script>
+/* ===== Scroll progress ===== */
+window.addEventListener('scroll',function(){var s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('prog').style.width=(h>0?(s/h)*100:0)+'%'});
+
+/* ===== Mind map popup ===== */
+function mmShow(t,p1,p2){
+document.getElementById('mmT').textContent=t;
+document.getElementById('mmP1').textContent=p1;
+document.getElementById('mmP2').textContent=p2;
+document.getElementById('mmOv').className='mm-overlay show';
+document.getElementById('mmPop').className='mm-popup show';
+}
+function mmClose(){
+document.getElementById('mmOv').className='mm-overlay';
+document.getElementById('mmPop').className='mm-popup';
+}
+
+/* ===== Bubble chart ===== */
+var bubData=[
+{t:'毛泽东思想',tag:'指导思想',bg:'linear-gradient(135deg,#C41E3A,#E8485C)',items:['确立为全党一切工作的指导指针','马克思列宁主义与中国革命实践相结合','马克思主义中国化的第一次历史性飞跃','刘少奇在修改党章报告中首次系统阐述']},
+{t:'联合政府',tag:'政治主张',bg:'linear-gradient(135deg,#D4A843,#B8942E)',items:['《论联合政府》——七大最核心的政治报告','主张建立民主联合政府取代一党专政','新民主主义中国的政治路线核心','提出废除国民党一党专政']},
+{t:'三大作风',tag:'党的建设',bg:'linear-gradient(135deg,#3B82A0,#2563EB)',items:['理论联系实际——实事求是的思想路线','密切联系群众——全心全意为人民服务','批评与自我批评——保持党的先进性','中国共产党区别于其他政党的显著标志']},
+{t:'团结胜利',tag:'大会主题',bg:'linear-gradient(135deg,#2D8B4E,#059669)',items:['七大被誉为"团结的大会、胜利的大会"','全党在思想上、政治上、组织上达到空前团结','结束了长期以来的路线争论','为夺取全国胜利提供了坚强保障']},
+{t:'新党章',tag:'制度建设',bg:'linear-gradient(135deg,#8B5CF6,#6D28D9)',items:['第一次将毛泽东思想写入党章','明确了党的性质、纲领和组织原则','确立了民主集中制的组织制度','为党的建设提供了根本制度保障']},
+{t:'愚公移山',tag:'闭幕词',bg:'linear-gradient(135deg,#F59E0B,#D97706)',items:['毛泽东在七大闭幕时作的著名讲话','用古代寓言激励全党全国人民','"下定决心，不怕牺牲，排除万难，去争取胜利"','成为传颂至今的经典名篇和精神力量']},
+{t:'人民战争',tag:'军事路线',bg:'linear-gradient(135deg,#EC4899,#BE185D)',items:['朱德在《论解放区战场》中系统阐述','八路军、新四军抗击大部分日军和几乎全部伪军','军民一致、官兵一致的核心原则','为夺取抗战最后胜利提供军事理论指导']},
+{t:'两个命运',tag:'开幕词',bg:'linear-gradient(135deg,#14B8A6,#0D9488)',items:['毛泽东开幕词《两个中国之命运》','光明命运：独立、自由、民主、统一、富强的中国','黑暗命运：半殖民地半封建的、分裂的、贫弱的中国','七大的使命就是争取光明的命运']}
+];
+function bubOpen(i){
+var d=bubData[i];
+document.getElementById('bubT').textContent=d.t;
+document.getElementById('bubTag').textContent=d.tag;
+document.getElementById('bubHead').style.background=d.bg;
+var h='<p style="font-weight:600;margin-bottom:8px;color:var(--b1)">'+d.t+'</p><ul>';
+for(var j=0;j<d.items.length;j++) h+='<li>'+d.items[j]+'</li>';
+h+='</ul>';
+document.getElementById('bubBody').innerHTML=h;
+document.getElementById('bubOv').className='mm-overlay show';
+document.getElementById('bubCard').className='bub-card show';
+}
+function bubClose(){
+document.getElementById('bubOv').className='mm-overlay';
+document.getElementById('bubCard').className='bub-card';
+}
+
+/* ===== Quiz ===== */
+var QS=[
+{q:"中共七大是在哪一年召开的？",o:["1935年","1942年","1945年","1949年"],a:2,e:"七大于1945年4月23日至6月11日召开。"},
+{q:"七大召开的地点是哪里？",o:["遵义","延安杨家岭","北京","西柏坡"],a:1,e:"七大在延安杨家岭中央大礼堂召开。"},
+{q:"七大确立的党的指导思想是什么？",o:["三民主义","邓小平理论","毛泽东思想","科学发展观"],a:2,e:"七大将毛泽东思想确立为党的指导思想。"},
+{q:"毛泽东在七大上作的政治报告题目是？",o:["《论持久战》","《论联合政府》","《星星之火，可以燎原》","《新民主主义论》"],a:1,e:"《论联合政府》是核心政治报告。"},
+{q:"七大被誉为什么样的大会？",o:["转折的大会","革命的大会","团结的大会、胜利的大会","民主的大会"],a:2,e:"七大被誉为团结的大会、胜利的大会。"},
+{q:"七大选举谁为中央委员会主席？",o:["周恩来","刘少奇","朱德","毛泽东"],a:3,e:"毛泽东当选为中央委员会主席。"},
+{q:"七大共有多少名代表参加？",o:["547人","755人","1021人","300人"],a:1,e:"755名代表参加了七大。"},
+{q:"七大当时全国共有多少名党员？",o:["80万","121万","200万","50万"],a:1,e:"全国共有党员121万名。"},
+{q:"七大在哪个礼堂召开？",o:["枣园礼堂","杨家岭中央大礼堂","延安大学礼堂","王家坪礼堂"],a:1,e:"在延安杨家岭中央大礼堂召开。"},
+{q:"刘少奇在七大上作了什么报告？",o:["《论联合政府》","《关于修改党章的报告》","《论解放区战场》","《论统一战线》"],a:1,e:"刘少奇作《关于修改党章的报告》。"},
+{q:"朱德在七大上作了什么报告？",o:["《论持久战》","《关于军事问题的报告》","《论解放区战场》","《论游击战》"],a:2,e:"朱德作《论解放区战场》军事报告。"},
+{q:"周恩来在七大上作了什么发言？",o:["《论人民民主专政》","《论统一战线》","《关于若干历史问题的决议》","《论合作社》"],a:1,e:"周恩来作《论统一战线》发言。"},
+{q:"七大距六大间隔了多少年？",o:["10年","13年","17年","20年"],a:2,e:"六大1928年，七大1945年，间隔17年。"},
+{q:"七大开幕词的标题是什么？",o:["《论联合政府》","《两个中国之命运》","《愚公移山》","《为人民服务》"],a:1,e:"开幕词为《两个中国之命运》。"},
+{q:"七大闭幕词的标题是什么？",o:["《愚公移山》","《为人民服务》","《纪念白求恩》","《论联合政府》"],a:0,e:"闭幕词为《愚公移山》。"},
+{q:"七大提出的三大作风不包括？",o:["理论联系实际","密切联系群众","批评与自我批评","实事求是"],a:3,e:"三大作风：理论联系实际、密切联系群众、批评与自我批评。"},
+{q:"七大通过了什么重要文件？",o:["《共同纲领》","新党章","《土地法》","《宪法草案》"],a:1,e:"七大通过了新党章。"},
+{q:"七大选举产生了多少名中央委员？",o:["34名","44名","54名","64名"],a:1,e:"选举产生44名中央委员。"},
+{q:"七大的会期大约有多长？",o:["10天","30天","50天","100天"],a:2,e:"历时约50天（4.23-6.11）。"},
+{q:"七大的目标是建立什么样的中国？",o:["社会主义中国","新民主主义中国","资本主义中国","共产主义中国"],a:1,e:"目标是建立新民主主义中国。"}
+];
+var wb=[],cq=[],ci=0,cs=0,an=false;
+try{wb=JSON.parse(localStorage.getItem('yanan1945_wb')||'[]')}catch(e){wb=[]}
+function shuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t}return b}
+function sw(id){var all=['qs-w','qs-q','qs-r','qs-n'];for(var i=0;i<all.length;i++)document.getElementById(all[i]).style.display='none';document.getElementById(id).style.display='block'}
+function openQuiz(){document.getElementById('qm').style.display='flex';document.body.style.overflow='hidden';document.getElementById('qmtt').textContent='随堂小测';sw('qs-w')}
+function closeQuiz(){document.getElementById('qm').style.display='none';document.body.style.overflow=''}
+function startQuiz(){cq=shuf(QS).slice(0,5);ci=0;cs=0;an=false;sw('qs-q');rq()}
+function rq(){var q=cq[ci],L=['A','B','C','D'],h='<div class="qqw"><div class="qqt"><span class="qqtn">'+(ci+1)+'</span><span>'+q.q+'</span></div><div class="qqol">';for(var i=0;i<q.o.length;i++)h+='<div class="qop" data-l="'+L[i]+'" onclick="pa('+i+')">'+q.o[i]+'</div>';h+='</div><div class="qex" id="qexp">'+q.e+'</div></div><button class="qnx" id="qnx" style="display:none" onclick="nq()">'+(ci<4?'下一题 &#10132;':'查看结果 &#10132;')+'</button>';document.getElementById('qArea').innerHTML=h;an=false}
+function pa(i){if(an)return;an=true;var q=cq[ci],ops=document.querySelectorAll('.qop');for(var j=0;j<ops.length;j++)ops[j].classList.add('off');if(i===q.a){ops[i].classList.add('ok');cs++}else{ops[i].classList.add('ng');ops[q.a].classList.add('ok');wb.push({q:q.q,y:q.o[i],c:q.o[q.a],e:q.e});try{localStorage.setItem('yanan1945_wb',JSON.stringify(wb))}catch(e){}}document.getElementById('qexp').classList.add('show');document.getElementById('qnx').style.display='flex'}
+function nq(){ci++;if(ci>=5){sr();return}rq()}
+function sr(){sw('qs-r');document.getElementById('rS').textContent=cs+'/5';var s='',l='';if(cs===5){s='★★★★★';l='满分！太棒了！'}else if(cs>=4){s='★★★★☆';l='优秀！再巩固一下！'}else if(cs>=3){s='★★★☆☆';l='不错！继续加油！'}else if(cs>=2){s='★★☆☆☆';l='还需努力，看看错题本！'}else{s='★☆☆☆☆';l='没关系，多看看内容再来！'}document.getElementById('rSt').textContent=s;document.getElementById('rL').textContent=l}
+function showNB(){document.getElementById('qmtt').textContent='错题本';sw('qs-n');var c=document.getElementById('nbC'),sub=document.getElementById('nbSub');if(wb.length===0){sub.textContent='暂无错题';c.innerHTML='<div class="nbe"><p style="font-size:2.5rem;margin-bottom:8px">📋</p><p>太棒了！还没有错题记录</p></div>';return}sub.textContent='共 '+wb.length+' 道错题';var h='<div class="nbl">';for(var i=0;i<wb.length;i++){var w=wb[i];h+='<div class="nbi"><div class="nbiq">'+(i+1)+'. '+w.q+'</div><div class="nbiy">你的答案：'+w.y+'</div><div class="nbic">正确答案：'+w.c+'</div><div class="nbie">'+w.e+'</div></div>'}h+='</div>';c.innerHTML=h}
+function clearNB(){if(confirm('确定清空错题记录吗？')){wb=[];try{localStorage.setItem('yanan1945_wb','[]')}catch(e){}showNB()}}
+</script>
+</body>
+</html>
